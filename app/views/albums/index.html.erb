@@ -3,8 +3,8 @@
   <ul>
     <% @albums.each do |album| %>
       <li>
-        <%= album.name %>
+        <%= link_to album.name, album %>
       </li>
     <% end %>
-</ul>
+  </ul>
 </div>
