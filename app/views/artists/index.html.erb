@@ -1,0 +1,10 @@
+<div>
+  <h1 class="font-bold text-4xl">Artists</h1>
+  <ul>
+    <% @artists.each do |artist| %>
+      <li>
+        <%= "ID: #{artist["id"]} Name: #{artist["name"]}" %>
+      </li>
+    <% end %>
+</ul>
+</div>
