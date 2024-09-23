@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root "albums#index"
 
-  get "/albums", to: "albums#index"
+  resources :albums
+  
   get "/artists", to: "artists#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
