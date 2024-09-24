@@ -1,5 +1,17 @@
 <h1><%= "#{@album.name}, #{@album.year}" %></h1>
 
+<div class="grid grid-cols-5 auto-rows-auto gap-3">
+  <% @album_artists.each do |artist| %>
+    <div class="flex flex-col justify-between rounded-lg bg-cyan-900 p-3 w-32 h-36 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
+      <div class="flex-col">
+        <h2 class="mb-2 text-lg font-medium leading-tight"><%= artist['name'] %></h2>
+        <p class="mb-4 text-sm"><%= artist['twitter'] %></p>
+      </div>
+      <%= button_to "Remove", remove_artist_album_path(@album, artist_id: artist['id']), method: :post, class:"btn-secondary danger" %>
+    </div>
+  <% end %>
+</div>
+
 <h2>Add Artsits</h2>
 
 <div class="grid grid-cols-5 auto-rows-auto gap-3">

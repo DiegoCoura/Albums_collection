@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :albums do
     post 'add_artist', on: :member
+    post 'remove_artist', on: :member
     resources :artists
   end
 

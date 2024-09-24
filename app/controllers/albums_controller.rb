@@ -9,12 +9,27 @@ class AlbumsController < ApplicationController
 
   def show
     artists_service = ArtistsService.new
+    all_artists = artists_service.get_all_artists
     @album = Album.find(params[:id])
-    @artists = artists_service.get_all_artists.reject { |artist| @album.artists_ids.include?(artist['id']) }
+    @album_artists = all_artists.select { |artist| @album.artists_ids.include?(artist['id']) }
+    @artists = all_artists.reject { |artist| @album.artists_ids.include?(artist['id']) }
   end
 
   def new
     @album = Album.new
+  end
+
+  def remove_artist
+    @album = Album.find(params[:id])
+
+    artist_id = params[:artist_id]
+    @album.artists_ids.delete(artist_id.to_i)
+
+    if @album.save
+      redirect_to @album, notice: "Artist removed successfully!"
+    else
+      redirect_to @album, notice: "Something went wrong! Try again later."
+    end
   end
 
   def add_artist
