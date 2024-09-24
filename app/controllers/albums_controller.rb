@@ -12,8 +12,9 @@ class AlbumsController < ApplicationController
   end
 
   def create
+    @user = User.find(current_user.id)
     @album = Album.new(album_params)
-
+    @album.user_id = @user.id
     if @album.save
       redirect_to @album
     else
