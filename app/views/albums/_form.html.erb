@@ -1,0 +1,21 @@
+<%= form_with model: album do |form| %>
+  <div>
+    <%= form.label :name %><br>
+    <%= form.text_field :name %>
+    <% album.errors.full_messages_for(:name).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.label :year %><br>
+    <%= form.number_field :year %>
+    <% album.errors.full_messages_for(:year).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div>
+    <%= form.submit class:"btn-primary mt-2"%>
+  </div>
+<% end %>
