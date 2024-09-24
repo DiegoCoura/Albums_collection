@@ -1,4 +1,4 @@
-<h1><%= "#{@album.name}, #{@album.year}" %></h1>
+<h1 class="text-xl font-bold pb-2"><%= "#{@album.name}, #{@album.year}" %></h1>
 
 <div class="grid grid-cols-5 auto-rows-auto gap-3">
   <% @album_artists.each do |artist| %>
