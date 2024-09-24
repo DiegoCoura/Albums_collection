@@ -1,4 +1,6 @@
 class AlbumsController < ApplicationController
+  before_action :is_admin?, only: [:destroy]
+  before_action :authenticate_user!, except: [:index]
   def index
     if user_signed_in?
       @albums = Album.where(user_id: current_user.id)
@@ -55,8 +57,34 @@ class AlbumsController < ApplicationController
     end
   end
 
+  def edit
+    @album = Album.find(params[:id])
+  end
+
+  def update
+    @album = Album.find(params[:id])
+
+    if @album.update(album_params)
+      redirect_to @album
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+  def destroy
+    @album = Album.find(params[:id])
+    @album.destroy
+
+    redirect_to root_path, status: :see_other
+  end
+
   private
   def album_params
     params.require(:album).permit(:name, :year)
+  end
+
+  def is_admin?
+    unless current_user != nil && current_user.admin
+      redirect_to new_user_session_path, notice: "Only admins can access this page."
+    end
   end
 end

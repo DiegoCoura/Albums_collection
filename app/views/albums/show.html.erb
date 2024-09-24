@@ -1,4 +1,13 @@
-<h1 class="text-xl font-bold pb-2"><%= "#{@album.name}, #{@album.year}" %></h1>
+<div class="flex justify-between">
+  <h1 class="text-xl font-bold pb-2"><%= "#{@album.name}, #{@album.year}" %></h1>
+  <div>
+    <%= link_to "Edit", edit_album_path(@album) %>
+    <%= link_to "Delete Album", album_path(@album), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %>
+  </div>
+</div>
 
 <div class="grid grid-cols-5 auto-rows-auto gap-3">
   <% @album_artists.each do |artist| %>
