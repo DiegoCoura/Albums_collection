@@ -18,10 +18,25 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="p-3">
       <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>      
-      <main class="container mx-auto mt-28 px-5">      
+      <p class="alert"><%= alert %></p>
+      <div class="flex gap-2">
+        <% if user_signed_in? %>
+          <button class="btn-primary">
+            <%= link_to "Profile", edit_user_registration_path %>
+          </button>
+          <%= button_to "Logout", destroy_user_session_path, method: :delete, class:"btn-primary" %>
+        <% else %>      
+          <button class="btn-primary">
+            <%= link_to "Login", new_user_session_path %>
+          </button>
+          <button class="btn-primary">
+            <%= link_to "Signup", new_user_registration_path %>
+          </button>
+        <% end %>
+      </div>
+      <main class="container mx-auto mt-6 px-5">      
       <%= yield %>
     </main>
   </body>
