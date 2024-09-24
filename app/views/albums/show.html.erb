@@ -1,1 +1,13 @@
 <h1><%= "#{@album.name}, #{@album.year}" %></h1>
+
+<h2>Add Artsits</h2>
+
+<div class="artists-container">
+  <% @artists.each do |artist| %>
+    <div class="artist-card">
+      <h2><%= artist['name'] %></h2>
+      <p><%= artist['twitter'] %></p>
+      <%= button_to "Add", add_artist_album_path(@album, artist_id: artist['id'], name: artist['name'], twitter:artist['twitter']), method: :post %>
+    </div>
+  <% end %>
+</div>
