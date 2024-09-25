@@ -80,6 +80,7 @@ test:
 #
 production:
   <<: *default
+  url: <%= ENV["DATABASE_URL"] %>
   database: albums_collection_production
   username: albums_collection
   password: <%= ENV["ALBUMS_COLLECTION_DATABASE_PASSWORD"] %>
