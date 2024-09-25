@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div class="grid grid-cols-5 auto-rows-auto gap-3">
+<div class="flex flex-wrap justify-start gap-3">
   <% @album_artists.each do |artist| %>
     <div class="flex flex-col justify-between rounded-lg bg-cyan-900 p-3 w-32 h-36 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
       <div class="flex-col">
@@ -23,7 +23,7 @@
 
 <h2>Add Artsits</h2>
 
-<div class="grid grid-cols-5 auto-rows-auto gap-3">
+<div class="flex flex-wrap justify-start gap-3">
   <% @artists.each do |artist| %>
     <div class="flex flex-col justify-between rounded-lg bg-cyan-900 p-3 w-32 h-36 text-surface shadow-secondary-1 dark:bg-surface-dark dark:text-white">
       <div class="flex-col">

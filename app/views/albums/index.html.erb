@@ -1,10 +1,13 @@
-<div>
-  <h1 class="font-bold text-4xl">Albums</h1>
-  <ul>
-    <% @albums.each do |album| %>
-      <li>
-        <%= link_to album.name, album %>
-      </li>
-    <% end %>
-  </ul>
+<div class="flex items-start flex-wrap justify-around w-full">
+  <div class="flex flex-col justify-between gap-3 max-w-2xl">
+    <h1 class="font-bold text-4xl">Albums</h1>
+    <ul>
+      <% @albums.each do |album| %>
+        <li>
+          <%= link_to album.name, album %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+    <%= link_to "New Album", new_album_path, class:"btn-secondary" %>
 </div>

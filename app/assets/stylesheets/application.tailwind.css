@@ -8,7 +8,7 @@
   }
 
   .btn-secondary {
-    @apply bg-cyan-400 px-2 py-1 rounded-lg font-medium text-sm cursor-pointer;
+    @apply bg-cyan-400 px-2 py-1 rounded-lg font-medium text-sm text-slate-50 cursor-pointer;
   }
 
   .danger {
